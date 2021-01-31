@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RentCarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="BrandId" />
+    </Key>
+    <Property Name="BrandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Model" Relationship="Self.FK__Model__BrandId__3A81B327" FromRole="Brand" ToRole="Model" />
+    <NavigationProperty Name="Vehicle" Relationship="Self.FK__Vehicle__BrandId__403A8C7D" FromRole="Brand" ToRole="Vehicle" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DocumentNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreditCard" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreditLimit" Type="Int32" />
+    <Property Name="ClientType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Inspection" Relationship="Self.FK__Inspectio__Clien__49C3F6B7" FromRole="Client" ToRole="Inspection" />
+    <NavigationProperty Name="RentAndRefund" Relationship="Self.FK__RentAndRe__Clien__4E88ABD4" FromRole="Client" ToRole="RentAndRefund" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DocumentNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BatchLabor" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="CommissionPercentage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AdmissionDate" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Inspection" Relationship="Self.FK__Inspectio__Emplo__4AB81AF0" FromRole="Employee" ToRole="Inspection" />
+    <NavigationProperty Name="RentAndRefund" Relationship="Self.FK__RentAndRe__Emplo__4F7CD00D" FromRole="Employee" ToRole="RentAndRefund" />
+  </EntityType>
+  <EntityType Name="FuelType">
+    <Key>
+      <PropertyRef Name="FuelTypeId" />
+    </Key>
+    <Property Name="FuelTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Vehicle" Relationship="Self.FK__Vehicle__FuelTyp__4222D4EF" FromRole="FuelType" ToRole="Vehicle" />
+  </EntityType>
+  <EntityType Name="Inspection">
+    <Key>
+      <PropertyRef Name="InspectionId" />
+    </Key>
+    <Property Name="InspectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fuel" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="HaveGrated" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="HaveReplacementTyre" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="HaveJack" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="HaveWindowCrack" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="FLTyreStatus" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="FRTyreStatus" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="RLTyreStatus" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="RRTyreStatus" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Comment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="VehicleId" Type="Int32" />
+    <Property Name="ClientId" Type="Int32" />
+    <Property Name="EmployeeId" Type="Int32" />
+    <NavigationProperty Name="Client" Relationship="Self.FK__Inspectio__Clien__49C3F6B7" FromRole="Inspection" ToRole="Client" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Inspectio__Emplo__4AB81AF0" FromRole="Inspection" ToRole="Employee" />
+    <NavigationProperty Name="Vehicle" Relationship="Self.FK__Inspectio__Vehic__48CFD27E" FromRole="Inspection" ToRole="Vehicle" />
+  </EntityType>
+  <EntityType Name="Model">
+    <Key>
+      <PropertyRef Name="ModelId" />
+    </Key>
+    <Property Name="ModelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrandId" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Brand" Relationship="Self.FK__Model__BrandId__3A81B327" FromRole="Model" ToRole="Brand" />
+    <NavigationProperty Name="Vehicle" Relationship="Self.FK__Vehicle__ModelId__412EB0B6" FromRole="Model" ToRole="Vehicle" />
+  </EntityType>
+  <EntityType Name="RentAndRefund">
+    <Key>
+      <PropertyRef Name="RentAndRefundId" />
+    </Key>
+    <Property Name="RentAndRefundId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RentDate" Type="DateTime" Precision="0" />
+    <Property Name="RefundDate" Type="DateTime" Precision="0" />
+    <Property Name="AmountPerDay" Type="Int32" />
+    <Property Name="AmountOfDays" Type="Int32" />
+    <Property Name="Comment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="VehicleId" Type="Int32" />
+    <Property Name="ClientId" Type="Int32" />
+    <Property Name="EmployeeId" Type="Int32" />
+    <NavigationProperty Name="Client" Relationship="Self.FK__RentAndRe__Clien__4E88ABD4" FromRole="RentAndRefund" ToRole="Client" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__RentAndRe__Emplo__4F7CD00D" FromRole="RentAndRefund" ToRole="Employee" />
+    <NavigationProperty Name="Vehicle" Relationship="Self.FK__RentAndRe__Vehic__4D94879B" FromRole="RentAndRefund" ToRole="Vehicle" />
+  </EntityType>
+  <EntityType Name="Vehicle">
+    <Key>
+      <PropertyRef Name="VehicleId" />
+    </Key>
+    <Property Name="VehicleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ChasisNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="MotorNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PlateNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="VehicleTypeId" Type="Int32" />
+    <Property Name="BrandId" Type="Int32" />
+    <Property Name="ModelId" Type="Int32" />
+    <Property Name="FuelTypeId" Type="Int32" />
+    <NavigationProperty Name="Brand" Relationship="Self.FK__Vehicle__BrandId__403A8C7D" FromRole="Vehicle" ToRole="Brand" />
+    <NavigationProperty Name="FuelType" Relationship="Self.FK__Vehicle__FuelTyp__4222D4EF" FromRole="Vehicle" ToRole="FuelType" />
+    <NavigationProperty Name="Inspection" Relationship="Self.FK__Inspectio__Vehic__48CFD27E" FromRole="Vehicle" ToRole="Inspection" />
+    <NavigationProperty Name="Model" Relationship="Self.FK__Vehicle__ModelId__412EB0B6" FromRole="Vehicle" ToRole="Model" />
+    <NavigationProperty Name="RentAndRefund" Relationship="Self.FK__RentAndRe__Vehic__4D94879B" FromRole="Vehicle" ToRole="RentAndRefund" />
+    <NavigationProperty Name="VehicleType" Relationship="Self.FK__Vehicle__Vehicle__3F466844" FromRole="Vehicle" ToRole="VehicleType" />
+  </EntityType>
+  <EntityType Name="VehicleType">
+    <Key>
+      <PropertyRef Name="VehicleTypeId" />
+    </Key>
+    <Property Name="VehicleTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Vehicle" Relationship="Self.FK__Vehicle__Vehicle__3F466844" FromRole="VehicleType" ToRole="Vehicle" />
+  </EntityType>
+  <Association Name="FK__Model__BrandId__3A81B327">
+    <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
+    <End Role="Model" Type="Self.Model" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="BrandId" />
+      </Principal>
+      <Dependent Role="Model">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehicle__BrandId__403A8C7D">
+    <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="BrandId" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inspectio__Clien__49C3F6B7">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Inspection" Type="Self.Inspection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientId" />
+      </Principal>
+      <Dependent Role="Inspection">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RentAndRe__Clien__4E88ABD4">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="RentAndRefund" Type="Self.RentAndRefund" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientId" />
+      </Principal>
+      <Dependent Role="RentAndRefund">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inspectio__Emplo__4AB81AF0">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Inspection" Type="Self.Inspection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="Inspection">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RentAndRe__Emplo__4F7CD00D">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="RentAndRefund" Type="Self.RentAndRefund" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="RentAndRefund">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehicle__FuelTyp__4222D4EF">
+    <End Role="FuelType" Type="Self.FuelType" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FuelType">
+        <PropertyRef Name="FuelTypeId" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="FuelTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inspectio__Vehic__48CFD27E">
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="0..1" />
+    <End Role="Inspection" Type="Self.Inspection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle">
+        <PropertyRef Name="VehicleId" />
+      </Principal>
+      <Dependent Role="Inspection">
+        <PropertyRef Name="VehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehicle__ModelId__412EB0B6">
+    <End Role="Model" Type="Self.Model" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Model">
+        <PropertyRef Name="ModelId" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="ModelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RentAndRe__Vehic__4D94879B">
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="0..1" />
+    <End Role="RentAndRefund" Type="Self.RentAndRefund" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle">
+        <PropertyRef Name="VehicleId" />
+      </Principal>
+      <Dependent Role="RentAndRefund">
+        <PropertyRef Name="VehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehicle__Vehicle__3F466844">
+    <End Role="VehicleType" Type="Self.VehicleType" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleType">
+        <PropertyRef Name="VehicleTypeId" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="VehicleTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RentCarEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Brand" EntityType="Self.Brand" />
+    <EntitySet Name="Client" EntityType="Self.Client" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" />
+    <EntitySet Name="FuelType" EntityType="Self.FuelType" />
+    <EntitySet Name="Inspection" EntityType="Self.Inspection" />
+    <EntitySet Name="Model" EntityType="Self.Model" />
+    <EntitySet Name="RentAndRefund" EntityType="Self.RentAndRefund" />
+    <EntitySet Name="Vehicle" EntityType="Self.Vehicle" />
+    <EntitySet Name="VehicleType" EntityType="Self.VehicleType" />
+    <AssociationSet Name="FK__Model__BrandId__3A81B327" Association="Self.FK__Model__BrandId__3A81B327">
+      <End Role="Brand" EntitySet="Brand" />
+      <End Role="Model" EntitySet="Model" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehicle__BrandId__403A8C7D" Association="Self.FK__Vehicle__BrandId__403A8C7D">
+      <End Role="Brand" EntitySet="Brand" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inspectio__Clien__49C3F6B7" Association="Self.FK__Inspectio__Clien__49C3F6B7">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Inspection" EntitySet="Inspection" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RentAndRe__Clien__4E88ABD4" Association="Self.FK__RentAndRe__Clien__4E88ABD4">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="RentAndRefund" EntitySet="RentAndRefund" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inspectio__Emplo__4AB81AF0" Association="Self.FK__Inspectio__Emplo__4AB81AF0">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Inspection" EntitySet="Inspection" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RentAndRe__Emplo__4F7CD00D" Association="Self.FK__RentAndRe__Emplo__4F7CD00D">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="RentAndRefund" EntitySet="RentAndRefund" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehicle__FuelTyp__4222D4EF" Association="Self.FK__Vehicle__FuelTyp__4222D4EF">
+      <End Role="FuelType" EntitySet="FuelType" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inspectio__Vehic__48CFD27E" Association="Self.FK__Inspectio__Vehic__48CFD27E">
+      <End Role="Vehicle" EntitySet="Vehicle" />
+      <End Role="Inspection" EntitySet="Inspection" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehicle__ModelId__412EB0B6" Association="Self.FK__Vehicle__ModelId__412EB0B6">
+      <End Role="Model" EntitySet="Model" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RentAndRe__Vehic__4D94879B" Association="Self.FK__RentAndRe__Vehic__4D94879B">
+      <End Role="Vehicle" EntitySet="Vehicle" />
+      <End Role="RentAndRefund" EntitySet="RentAndRefund" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehicle__Vehicle__3F466844" Association="Self.FK__Vehicle__Vehicle__3F466844">
+      <End Role="VehicleType" EntitySet="VehicleType" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
