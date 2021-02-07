@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using RentCar.Models;
 
@@ -17,6 +18,7 @@ namespace RentCar.Controllers
         private RentCarEntities db = new RentCarEntities();
 
         // GET: api/Models
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IQueryable<Model> GetModel()
         {
             return db.Model;
@@ -24,6 +26,7 @@ namespace RentCar.Controllers
 
         // GET: api/Models/5
         [ResponseType(typeof(Model))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetModel(int id)
         {
             Model model = db.Model.Find(id);
@@ -37,6 +40,7 @@ namespace RentCar.Controllers
 
         // PUT: api/Models/5
         [ResponseType(typeof(void))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PutModel(int id, Model model)
         {
             if (!ModelState.IsValid)
@@ -72,6 +76,7 @@ namespace RentCar.Controllers
 
         // POST: api/Models
         [ResponseType(typeof(Model))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PostModel(Model model)
         {
             if (!ModelState.IsValid)
@@ -87,6 +92,7 @@ namespace RentCar.Controllers
 
         // DELETE: api/Models/5
         [ResponseType(typeof(Model))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult DeleteModel(int id)
         {
             Model model = db.Model.Find(id);

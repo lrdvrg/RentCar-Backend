@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using RentCar.Models;
 
@@ -17,6 +18,7 @@ namespace RentCar.Controllers
         private RentCarEntities db = new RentCarEntities();
 
         // GET: api/Employees
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IQueryable<Employee> GetEmployee()
         {
             return db.Employee;
@@ -24,6 +26,7 @@ namespace RentCar.Controllers
 
         // GET: api/Employees/5
         [ResponseType(typeof(Employee))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetEmployee(int id)
         {
             Employee employee = db.Employee.Find(id);
@@ -37,6 +40,7 @@ namespace RentCar.Controllers
 
         // PUT: api/Employees/5
         [ResponseType(typeof(void))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PutEmployee(int id, Employee employee)
         {
             if (!ModelState.IsValid)
@@ -72,6 +76,7 @@ namespace RentCar.Controllers
 
         // POST: api/Employees
         [ResponseType(typeof(Employee))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PostEmployee(Employee employee)
         {
             if (!ModelState.IsValid)
@@ -87,6 +92,7 @@ namespace RentCar.Controllers
 
         // DELETE: api/Employees/5
         [ResponseType(typeof(Employee))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult DeleteEmployee(int id)
         {
             Employee employee = db.Employee.Find(id);

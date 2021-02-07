@@ -92,8 +92,14 @@ C:\Users\isaid\source\repos\RentCar\RentCar\bin\es\System.Web.Razor.resources.dl
 C:\Users\isaid\source\repos\RentCar\RentCar\bin\es\System.Web.WebPages.resources.dll
 C:\Users\isaid\source\repos\RentCar\RentCar\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\isaid\source\repos\RentCar\RentCar\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\isaid\source\repos\RentCar\RentCar\obj\Debug\RentCar.csprojAssemblyReference.cache
 C:\Users\isaid\source\repos\RentCar\RentCar\obj\Debug\RentCar.csproj.CoreCompileInputs.cache
 C:\Users\isaid\source\repos\RentCar\RentCar\obj\Debug\RentCar.csproj.CopyComplete
 C:\Users\isaid\source\repos\RentCar\RentCar\obj\Debug\RentCar.dll
 C:\Users\isaid\source\repos\RentCar\RentCar\obj\Debug\RentCar.pdb
+C:\Users\isaid\source\repos\RentCar\RentCar\bin\RentCar.xml
+C:\Users\isaid\source\repos\RentCar\RentCar\bin\Swashbuckle.Core.dll
+C:\Users\isaid\source\repos\RentCar\RentCar\bin\WebActivatorEx.dll
+C:\Users\isaid\source\repos\RentCar\RentCar\bin\System.Web.Cors.dll
+C:\Users\isaid\source\repos\RentCar\RentCar\bin\System.Web.Http.Cors.dll
+C:\Users\isaid\source\repos\RentCar\RentCar\bin\System.Web.Http.Cors.xml
+C:\Users\isaid\source\repos\RentCar\RentCar\obj\Debug\RentCar.csprojAssemblyReference.cache

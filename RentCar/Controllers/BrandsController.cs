@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using RentCar.Models;
 
@@ -17,12 +18,14 @@ namespace RentCar.Controllers
         private RentCarEntities db = new RentCarEntities();
 
         // GET: api/Brands
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IQueryable<Brand> GetBrand()
         {
             return db.Brand;
         }
 
         // GET: api/Brands/5
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [ResponseType(typeof(Brand))]
         public IHttpActionResult GetBrand(int id)
         {
@@ -37,6 +40,7 @@ namespace RentCar.Controllers
 
         // PUT: api/Brands/5
         [ResponseType(typeof(void))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PutBrand(int id, Brand brand)
         {
             if (!ModelState.IsValid)
@@ -72,6 +76,7 @@ namespace RentCar.Controllers
 
         // POST: api/Brands
         [ResponseType(typeof(Brand))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PostBrand(Brand brand)
         {
             if (!ModelState.IsValid)
@@ -87,6 +92,7 @@ namespace RentCar.Controllers
 
         // DELETE: api/Brands/5
         [ResponseType(typeof(Brand))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult DeleteBrand(int id)
         {
             Brand brand = db.Brand.Find(id);

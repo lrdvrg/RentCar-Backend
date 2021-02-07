@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using RentCar.Models;
 
@@ -17,6 +18,7 @@ namespace RentCar.Controllers
         private RentCarEntities db = new RentCarEntities();
 
         // GET: api/VehicleTypes
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IQueryable<VehicleType> GetVehicleType()
         {
             return db.VehicleType;
@@ -24,6 +26,7 @@ namespace RentCar.Controllers
 
         // GET: api/VehicleTypes/5
         [ResponseType(typeof(VehicleType))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetVehicleType(int id)
         {
             VehicleType vehicleType = db.VehicleType.Find(id);
@@ -37,6 +40,7 @@ namespace RentCar.Controllers
 
         // PUT: api/VehicleTypes/5
         [ResponseType(typeof(void))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PutVehicleType(int id, VehicleType vehicleType)
         {
             if (!ModelState.IsValid)
@@ -72,6 +76,7 @@ namespace RentCar.Controllers
 
         // POST: api/VehicleTypes
         [ResponseType(typeof(VehicleType))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PostVehicleType(VehicleType vehicleType)
         {
             if (!ModelState.IsValid)
@@ -87,6 +92,7 @@ namespace RentCar.Controllers
 
         // DELETE: api/VehicleTypes/5
         [ResponseType(typeof(VehicleType))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult DeleteVehicleType(int id)
         {
             VehicleType vehicleType = db.VehicleType.Find(id);

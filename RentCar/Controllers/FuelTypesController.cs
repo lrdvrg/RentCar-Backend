@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using RentCar.Models;
 
@@ -17,6 +18,7 @@ namespace RentCar.Controllers
         private RentCarEntities db = new RentCarEntities();
 
         // GET: api/FuelTypes
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IQueryable<FuelType> GetFuelType()
         {
             return db.FuelType;
@@ -24,6 +26,7 @@ namespace RentCar.Controllers
 
         // GET: api/FuelTypes/5
         [ResponseType(typeof(FuelType))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetFuelType(int id)
         {
             FuelType fuelType = db.FuelType.Find(id);
@@ -37,6 +40,7 @@ namespace RentCar.Controllers
 
         // PUT: api/FuelTypes/5
         [ResponseType(typeof(void))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PutFuelType(int id, FuelType fuelType)
         {
             if (!ModelState.IsValid)
@@ -72,6 +76,7 @@ namespace RentCar.Controllers
 
         // POST: api/FuelTypes
         [ResponseType(typeof(FuelType))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PostFuelType(FuelType fuelType)
         {
             if (!ModelState.IsValid)
@@ -87,6 +92,7 @@ namespace RentCar.Controllers
 
         // DELETE: api/FuelTypes/5
         [ResponseType(typeof(FuelType))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult DeleteFuelType(int id)
         {
             FuelType fuelType = db.FuelType.Find(id);
