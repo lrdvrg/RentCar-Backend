@@ -25,6 +25,7 @@
         <AssociationConnector Association="RentCarModel.FK__Vehicle__ModelId__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="RentCarModel.FK__RentAndRe__Vehic__4D94879B" ManuallyRouted="false" />
         <AssociationConnector Association="RentCarModel.FK__Vehicle__Vehicle__3F466844" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RentCarModel.Usuario" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

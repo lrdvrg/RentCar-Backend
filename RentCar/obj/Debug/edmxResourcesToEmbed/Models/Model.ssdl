@@ -85,6 +85,14 @@
     <Property Name="ClientId" Type="int" />
     <Property Name="EmployeeId" Type="int" />
   </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="60" />
+    <Property Name="Password" Type="varchar" MaxLength="60" />
+  </EntityType>
   <EntityType Name="Vehicle">
     <Key>
       <PropertyRef Name="VehicleId" />
@@ -248,6 +256,7 @@
     <EntitySet Name="Inspection" EntityType="Self.Inspection" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RentAndRefund" EntityType="Self.RentAndRefund" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VehicleType" EntityType="Self.VehicleType" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Inspectio__Clien__49C3F6B7" Association="Self.FK__Inspectio__Clien__49C3F6B7">

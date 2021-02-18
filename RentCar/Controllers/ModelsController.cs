@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using AutoMapper;
+using RentCar.DTOs;
 using RentCar.Models;
 
 namespace RentCar.Controllers
@@ -19,23 +21,27 @@ namespace RentCar.Controllers
 
         // GET: api/Models
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IQueryable<Model> GetModel()
+        public List<ModelDTO> GetModel()
         {
-            return db.Model;
+
+             var students = AutoMapper.Mapper.Map<List<DTOs.ModelDTO>>(db.Model.ToList());
+
+
+            return Mapper.Map<List<ModelDTO>>(db.Model.ToList());
         }
 
         // GET: api/Models/5
         [ResponseType(typeof(Model))]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IHttpActionResult GetModel(int id)
+        public ModelDTO GetModel(int id)
         {
             Model model = db.Model.Find(id);
             if (model == null)
             {
-                return NotFound();
+                // return NotFound();
             }
 
-            return Ok(model);
+            return Mapper.Map<ModelDTO>(model);
         }
 
         // PUT: api/Models/5

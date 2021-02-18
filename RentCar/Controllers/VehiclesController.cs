@@ -7,7 +7,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using AutoMapper;
+using RentCar.DTOs;
 using RentCar.Models;
 
 namespace RentCar.Controllers
@@ -17,26 +20,29 @@ namespace RentCar.Controllers
         private RentCarEntities db = new RentCarEntities();
 
         // GET: api/Vehicles
-        public IQueryable<Vehicle> GetVehicle()
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public List<VehicleDTO> GetVehicle()
         {
-            return db.Vehicle;
+            return Mapper.Map<List<VehicleDTO>>(db.Vehicle.ToList());
         }
 
         // GET: api/Vehicles/5
         [ResponseType(typeof(Vehicle))]
-        public IHttpActionResult GetVehicle(int id)
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public VehicleDTO GetVehicle(int id)
         {
             Vehicle vehicle = db.Vehicle.Find(id);
             if (vehicle == null)
             {
-                return NotFound();
+                return null;
             }
 
-            return Ok(vehicle);
+            return Mapper.Map<VehicleDTO>(vehicle);
         }
 
         // PUT: api/Vehicles/5
         [ResponseType(typeof(void))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PutVehicle(int id, Vehicle vehicle)
         {
             if (!ModelState.IsValid)
@@ -72,6 +78,7 @@ namespace RentCar.Controllers
 
         // POST: api/Vehicles
         [ResponseType(typeof(Vehicle))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PostVehicle(Vehicle vehicle)
         {
             if (!ModelState.IsValid)
@@ -87,6 +94,7 @@ namespace RentCar.Controllers
 
         // DELETE: api/Vehicles/5
         [ResponseType(typeof(Vehicle))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult DeleteVehicle(int id)
         {
             Vehicle vehicle = db.Vehicle.Find(id);

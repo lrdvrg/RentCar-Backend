@@ -7,7 +7,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using AutoMapper;
+using RentCar.DTOs;
 using RentCar.Models;
 
 namespace RentCar.Controllers
@@ -17,26 +20,29 @@ namespace RentCar.Controllers
         private RentCarEntities db = new RentCarEntities();
 
         // GET: api/Inspections
-        public IQueryable<Inspection> GetInspection()
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public List<InspectionDTO> GetInspection()
         {
-            return db.Inspection;
+            return Mapper.Map<List<InspectionDTO>>(db.Inspection.ToList());
         }
 
         // GET: api/Inspections/5
         [ResponseType(typeof(Inspection))]
-        public IHttpActionResult GetInspection(int id)
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public InspectionDTO GetInspection(int id)
         {
             Inspection inspection = db.Inspection.Find(id);
             if (inspection == null)
             {
-                return NotFound();
+                // return NotFound();
             }
 
-            return Ok(inspection);
+            return Mapper.Map<InspectionDTO>(inspection);
         }
 
         // PUT: api/Inspections/5
         [ResponseType(typeof(void))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PutInspection(int id, Inspection inspection)
         {
             if (!ModelState.IsValid)
@@ -72,6 +78,7 @@ namespace RentCar.Controllers
 
         // POST: api/Inspections
         [ResponseType(typeof(Inspection))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PostInspection(Inspection inspection)
         {
             if (!ModelState.IsValid)
@@ -87,6 +94,7 @@ namespace RentCar.Controllers
 
         // DELETE: api/Inspections/5
         [ResponseType(typeof(Inspection))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult DeleteInspection(int id)
         {
             Inspection inspection = db.Inspection.Find(id);

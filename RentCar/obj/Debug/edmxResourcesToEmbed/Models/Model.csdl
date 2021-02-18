@@ -316,5 +316,14 @@
       <End Role="VehicleType" EntitySet="VehicleType" />
       <End Role="Vehicle" EntitySet="Vehicle" />
     </AssociationSet>
+    <EntitySet Name="Usuario" EntityType="RentCarModel.Usuario" />
   </EntityContainer>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

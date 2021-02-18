@@ -7,7 +7,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using AutoMapper;
+using RentCar.DTOs;
 using RentCar.Models;
 
 namespace RentCar.Controllers
@@ -17,26 +20,29 @@ namespace RentCar.Controllers
         private RentCarEntities db = new RentCarEntities();
 
         // GET: api/RentAndRefunds
-        public IQueryable<RentAndRefund> GetRentAndRefund()
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public List<RentAndRefundDTO> GetRentAndRefund()
         {
-            return db.RentAndRefund;
+            return Mapper.Map<List<RentAndRefundDTO>>(db.RentAndRefund.ToList());
         }
 
         // GET: api/RentAndRefunds/5
         [ResponseType(typeof(RentAndRefund))]
-        public IHttpActionResult GetRentAndRefund(int id)
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public RentAndRefundDTO GetRentAndRefund(int id)
         {
             RentAndRefund rentAndRefund = db.RentAndRefund.Find(id);
             if (rentAndRefund == null)
             {
-                return NotFound();
+               // return NotFound();
             }
 
-            return Ok(rentAndRefund);
+            return Mapper.Map<RentAndRefundDTO>(rentAndRefund);
         }
 
         // PUT: api/RentAndRefunds/5
         [ResponseType(typeof(void))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PutRentAndRefund(int id, RentAndRefund rentAndRefund)
         {
             if (!ModelState.IsValid)
@@ -72,6 +78,7 @@ namespace RentCar.Controllers
 
         // POST: api/RentAndRefunds
         [ResponseType(typeof(RentAndRefund))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult PostRentAndRefund(RentAndRefund rentAndRefund)
         {
             if (!ModelState.IsValid)
@@ -87,6 +94,7 @@ namespace RentCar.Controllers
 
         // DELETE: api/RentAndRefunds/5
         [ResponseType(typeof(RentAndRefund))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult DeleteRentAndRefund(int id)
         {
             RentAndRefund rentAndRefund = db.RentAndRefund.Find(id);

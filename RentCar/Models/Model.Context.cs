@@ -34,5 +34,6 @@ namespace RentCar.Models
         public virtual DbSet<RentAndRefund> RentAndRefund { get; set; }
         public virtual DbSet<Vehicle> Vehicle { get; set; }
         public virtual DbSet<VehicleType> VehicleType { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
     }
 }

@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using AutoMapper;
+using RentCar.DTOs;
 using RentCar.Models;
 
 namespace RentCar.Controllers
@@ -19,9 +21,9 @@ namespace RentCar.Controllers
 
         // GET: api/Brands
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IQueryable<Brand> GetBrand()
+        public List<BrandDTO> GetBrand()
         {
-            return db.Brand;
+            return Mapper.Map<List<BrandDTO>>(db.Brand.ToList());
         }
 
         // GET: api/Brands/5

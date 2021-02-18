@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using AutoMapper;
+using RentCar.DTOs;
 using RentCar.Models;
 
 namespace RentCar.Controllers
@@ -19,23 +21,23 @@ namespace RentCar.Controllers
 
         // GET: api/FuelTypes
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IQueryable<FuelType> GetFuelType()
+        public List<FuelTypeDTO> GetFuelType()
         {
-            return db.FuelType;
+            return Mapper.Map<List<FuelTypeDTO>>(db.FuelType.ToList());
         }
 
         // GET: api/FuelTypes/5
         [ResponseType(typeof(FuelType))]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IHttpActionResult GetFuelType(int id)
+        public FuelTypeDTO GetFuelType(int id)
         {
             FuelType fuelType = db.FuelType.Find(id);
             if (fuelType == null)
             {
-                return NotFound();
+                //return NotFound();
             }
 
-            return Ok(fuelType);
+            return Mapper.Map<FuelTypeDTO>(fuelType);
         }
 
         // PUT: api/FuelTypes/5
